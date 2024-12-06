@@ -1,0 +1,38 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const reactionBtns = document.querySelectorAll('.reaction-btn');
+
+    reactionBtns.forEach((reactionBtn) => {
+        const reactionIcons = reactionBtn.querySelector('.reaction-icons');
+        const reactionMain = reactionBtn.querySelector('.reaction-main');
+        const reactCount = reactionBtn.querySelector('.react-count');
+        let currentReaction = null;
+
+        // Show reactions on hover
+        reactionMain.addEventListener('mouseenter', () => {
+            reactionIcons.classList.remove('hidden');
+        });
+
+        // Hide reactions when mouse leaves
+        reactionMain.addEventListener('mouseleave', () => {
+            reactionIcons.classList.add('hidden');
+        });
+
+        // Handle reaction click
+        reactionIcons.addEventListener('click', (event) => {
+            if (event.target.tagName === 'I') {
+                const reaction = event.target.title;
+
+                // Update the main reaction button icon and color
+                reactionMain.innerHTML = `<i class="fas ${event.target.classList[0]}"></i> ${reaction}`;
+
+                // Update the reaction count
+                const currentCount = parseInt(reactCount.textContent) || 0;
+                reactCount.textContent = currentCount + 1;
+
+                // Add active class to main button
+                reactionMain.classList.add('active');
+                currentReaction = reaction;
+            }
+        });
+    });
+});
