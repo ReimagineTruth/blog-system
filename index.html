@@ -1,0 +1,56 @@
+<!-- Blog Posting Form -->
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h3 class="text-xl font-semibold mb-4">Post a News Update</h3>
+    <form id="blogForm">
+        <div class="mb-4">
+            <label for="title" class="block text-gray-700 font-medium">Title</label>
+            <input type="text" id="title" name="title" placeholder="Enter title" class="w-full p-2 border border-gray-300 rounded mt-1 focus:ring focus:ring-blue-300" required>
+        </div>
+        <div class="mb-4">
+            <label for="content" class="block text-gray-700 font-medium">Content</label>
+            <textarea id="content" name="content" placeholder="Write your content here..." class="w-full p-2 border border-gray-300 rounded mt-1 focus:ring focus:ring-blue-300" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Post</button>
+    </form>
+</div>
+
+<!-- Blog List -->
+<div id="blogPosts" class="space-y-6">
+    <!-- Dynamic blog posts will be appended here -->
+</div>
+
+<script>
+    const blogForm = document.getElementById('blogForm');
+    const blogPosts = document.getElementById('blogPosts');
+
+    // Handle form submission
+    blogForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        
+        const title = document.getElementById('title').value;
+        const content = document.getElementById('content').value;
+
+        // Send data to the backend
+        const response = await fetch('/api/blog', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, content }),
+        });
+
+        if (response.ok) {
+            // Add the new blog post dynamically
+            const newPost = document.createElement('div');
+            newPost.className = 'bg-white p-6 rounded-lg shadow-md';
+            newPost.innerHTML = `
+                <h3 class="text-xl font-semibold mb-2">${title}</h3>
+                <p class="text-gray-700">${content}</p>
+            `;
+            blogPosts.prepend(newPost);
+
+            // Clear the form
+            blogForm.reset();
+        } else {
+            alert('Failed to post the blog. Please try again.');
+        }
+    });
+</script>
