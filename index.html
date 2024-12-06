@@ -1,56 +1,370 @@
-<!-- Blog Posting Form -->
-<div class="bg-white p-6 rounded-lg shadow-md mb-6">
-    <h3 class="text-xl font-semibold mb-4">Post a News Update</h3>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   News Blog
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+  <script>
+   // Tailwind CSS configuration for dark mode
+        tailwind.config = {
+            darkMode: 'class',
+        }
+  </script>
+  <style>
+   .reaction-btn {
+            position: relative;
+            display: inline-block;
+        }
+        .reaction-btn .reaction-icons {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 8px;
+            z-index: 10;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .reaction-btn:hover .reaction-icons {
+            display: flex;
+        }
+        .reaction-icons i {
+            margin: 0 4px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .reaction-icons i:hover {
+            transform: scale(1.2);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+  </style>
+ </head>
+ <body class="bg-gray-100 font-roboto dark:bg-gray-900 dark:text-white">
+  <div class="container mx-auto p-6">
+   <!-- Menu Button -->
+   <div class="flex justify-between items-center mb-6">
+    <button class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded" id="menuToggle">
+     <i class="fas fa-bars">
+     </i>
+     Menu
+    </button>
+    <button class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded" id="darkModeToggle">
+     <i class="fas fa-moon">
+     </i>
+     Dark Mode
+    </button>
+   </div>
+   <!-- Menu -->
+   <div class="hidden bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6" id="menu">
+    <ul class="space-y-4">
+     <li>
+      <a class="text-gray-700 dark:text-gray-300 hover:underline" href="#">
+       Home
+      </a>
+     </li>
+     <li>
+      <a class="text-gray-700 dark:text-gray-300 hover:underline" href="#">
+       About
+      </a>
+     </li>
+     <li>
+      <a class="text-gray-700 dark:text-gray-300 hover:underline" href="#">
+       Contact
+      </a>
+     </li>
+    </ul>
+   </div>
+   <!-- Blog Posting Form -->
+   <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
+    <h3 class="text-xl font-semibold mb-4">
+     Post a News Update
+    </h3>
     <form id="blogForm">
-        <div class="mb-4">
-            <label for="title" class="block text-gray-700 font-medium">Title</label>
-            <input type="text" id="title" name="title" placeholder="Enter title" class="w-full p-2 border border-gray-300 rounded mt-1 focus:ring focus:ring-blue-300" required>
-        </div>
-        <div class="mb-4">
-            <label for="content" class="block text-gray-700 font-medium">Content</label>
-            <textarea id="content" name="content" placeholder="Write your content here..." class="w-full p-2 border border-gray-300 rounded mt-1 focus:ring focus:ring-blue-300" rows="5" required></textarea>
-        </div>
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Post</button>
+     <div class="mb-4">
+      <label class="block text-gray-700 dark:text-gray-300 font-medium" for="title">
+       Title
+      </label>
+      <input class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mt-1 focus:ring focus:ring-blue-300 dark:focus:ring-blue-500" id="title" name="title" placeholder="Enter title" required="" type="text"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700 dark:text-gray-300 font-medium" for="content">
+       Content
+      </label>
+      <textarea class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mt-1 focus:ring focus:ring-blue-300 dark:focus:ring-blue-500" id="content" name="content" placeholder="Write your content here..." required="" rows="5"></textarea>
+     </div>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" type="submit">
+      Post
+     </button>
     </form>
-</div>
+   </div>
+   <!-- Blog List -->
+   <div class="space-y-6" id="blogPosts">
+    <!-- Example blog post -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+     <h3 class="text-xl font-semibold mb-2">
+      Sample Blog Post Title
+     </h3>
+     <p class="text-gray-700 dark:text-gray-300">
+      This is a sample blog post content. It provides an example of how the blog post will look like.
+     </p>
+     <div class="reaction-btn mt-4">
+      <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">
+       <i class="fas fa-thumbs-up">
+       </i>
+       React
+      </button>
+      <div class="reaction-icons">
+       <i class="fas fa-thumbs-up text-blue-500" title="Like">
+       </i>
+       <i class="fas fa-heart text-red-500" title="Love">
+       </i>
+       <i class="fas fa-laugh text-yellow-500" title="Haha">
+       </i>
+       <i class="fas fa-surprise text-orange-500" title="Wow">
+       </i>
+       <i class="fas fa-sad-tear text-blue-300" title="Sad">
+       </i>
+       <i class="fas fa-angry text-red-700" title="Angry">
+       </i>
+      </div>
+     </div>
+     <div class="mt-2 text-gray-600 dark:text-gray-400">
+      <span class="react-count">
+       0
+      </span>
+      reactions
+     </div>
+     <div class="mt-2 text-gray-600 dark:text-gray-400">
+      <span class="recommend-count">
+       0
+      </span>
+      people recommend this
+     </div>
+    </div>
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+     <h3 class="text-xl font-semibold mb-2">
+      Another Blog Post Title
+     </h3>
+     <p class="text-gray-700 dark:text-gray-300">
+      This is another example of a blog post content. It provides an example of how the blog post will look like.
+     </p>
+     <div class="reaction-btn mt-4">
+      <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">
+       <i class="fas fa-thumbs-up">
+       </i>
+       React
+      </button>
+      <div class="reaction-icons">
+       <i class="fas fa-thumbs-up text-blue-500" title="Like">
+       </i>
+       <i class="fas fa-heart text-red-500" title="Love">
+       </i>
+       <i class="fas fa-laugh text-yellow-500" title="Haha">
+       </i>
+       <i class="fas fa-surprise text-orange-500" title="Wow">
+       </i>
+       <i class="fas fa-sad-tear text-blue-300" title="Sad">
+       </i>
+       <i class="fas fa-angry text-red-700" title="Angry">
+       </i>
+      </div>
+     </div>
+     <div class="mt-2 text-gray-600 dark:text-gray-400">
+      <span class="react-count">
+       0
+      </span>
+      reactions
+     </div>
+     <div class="mt-2 text-gray-600 dark:text-gray-400">
+      <span class="recommend-count">
+       0
+      </span>
+      people recommend this
+     </div>
+    </div>
+   </div>
+   <!-- Features Section -->
+   <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mt-6">
+    <h3 class="text-xl font-semibold mb-4">
+     Features
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+     <div class="feature-item bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md">
+      <img alt="Icon representing user-friendly interface" class="mb-4" height="100" src="https://storage.googleapis.com/a1aa/image/XGH41EUQr6J3OBc24KR7Ozgm1F5EyUDdYfakxQSPYWQjJF8JA.jpg" width="100"/>
+      <h4 class="text-lg font-semibold mb-2">
+       User-Friendly Interface
+      </h4>
+      <p class="text-gray-700 dark:text-gray-300">
+       Our platform is designed to be intuitive and easy to use, ensuring a seamless experience for all users.
+      </p>
+     </div>
+     <div class="feature-item bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md">
+      <img alt="Icon representing real-time updates" class="mb-4" height="100" src="https://storage.googleapis.com/a1aa/image/9BiuBShRFtKcB5uzecPRsbnlRUSkqQ0xW6GGmIamhA9fSK4TA.jpg" width="100"/>
+      <h4 class="text-lg font-semibold mb-2">
+       Real-Time Updates
+      </h4>
+      <p class="text-gray-700 dark:text-gray-300">
+       Stay informed with real-time updates on the latest news and events happening around the world.
+      </p>
+     </div>
+     <div class="feature-item bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md">
+      <img alt="Icon representing secure platform" class="mb-4" height="100" src="https://storage.googleapis.com/a1aa/image/YDafm7rulqU0ICNXi9r9I7twdi2p5FWRSIUlxDZFjnDhJF8JA.jpg" width="100"/>
+      <h4 class="text-lg font-semibold mb-2">
+       Secure Platform
+      </h4>
+      <p class="text-gray-700 dark:text-gray-300">
+       We prioritize your security and privacy, ensuring that your data is protected at all times.
+      </p>
+     </div>
+     <div class="feature-item bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md">
+      <img alt="Icon representing customizable settings" class="mb-4" height="100" src="https://storage.googleapis.com/a1aa/image/429H1aLPwQ78GtNcOABFsybkjpULOb6FQo5CX31FAAFxkCeJA.jpg" width="100"/>
+      <h4 class="text-lg font-semibold mb-2">
+       Customizable Settings
+      </h4>
+      <p class="text-gray-700 dark:text-gray-300">
+       Personalize your experience with customizable settings that cater to your preferences.
+      </p>
+     </div>
+     <div class="feature-item bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md">
+      <img alt="Icon representing community engagement" class="mb-4" height="100" src="https://storage.googleapis.com/a1aa/image/5ESfqveTnfOh9ooIBdpyK1UfmWWXT5SP87LyfEgJSX9IYSBfE.jpg" width="100"/>
+      <h4 class="text-lg font-semibold mb-2">
+       Community Engagement
+      </h4>
+      <p class="text-gray-700 dark:text-gray-300">
+       Engage with a vibrant community of users, share your thoughts, and participate in discussions.
+      </p>
+     </div>
+     <div class="feature-item bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md">
+      <img alt="Icon representing multi-device support" class="mb-4" height="100" src="https://storage.googleapis.com/a1aa/image/k1gYUhKk1abBKNlzqTDKJCqnohWm0tBcA7SB4l5xxCfhJF8JA.jpg" width="100"/>
+      <h4 class="text-lg font-semibold mb-2">
+       Multi-Device Support
+      </h4>
+      <p class="text-gray-700 dark:text-gray-300">
+       Access our platform from any device, whether it's a desktop, tablet, or smartphone.
+      </p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+   const blogForm = document.getElementById('blogForm');
+        const blogPosts = document.getElementById('blogPosts');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const menuToggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('menu');
 
-<!-- Blog List -->
-<div id="blogPosts" class="space-y-6">
-    <!-- Dynamic blog posts will be appended here -->
-</div>
+        // Handle form submission
+        blogForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
 
-<script>
-    const blogForm = document.getElementById('blogForm');
-    const blogPosts = document.getElementById('blogPosts');
+            // Send data to the backend
+            const response = await fetch('/api/blog', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, content }),
+            });
 
-    // Handle form submission
-    blogForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        
-        const title = document.getElementById('title').value;
-        const content = document.getElementById('content').value;
+            if (response.ok) {
+                // Add the new blog post dynamically
+                const newPost = document.createElement('div');
+                newPost.className = 'bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md';
+                newPost.innerHTML = `
+                    <h3 class="text-xl font-semibold mb-2">${title}</h3>
+                    <p class="text-gray-700 dark:text-gray-300">${content}</p>
+                    <div class="reaction-btn mt-4">
+                        <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">
+                            <i class="fas fa-thumbs-up"></i> React
+                        </button>
+                        <div class="reaction-icons">
+                            <i class="fas fa-thumbs-up text-blue-500" title="Like"></i>
+                            <i class="fas fa-heart text-red-500" title="Love"></i>
+                            <i class="fas fa-laugh text-yellow-500" title="Haha"></i>
+                            <i class="fas fa-surprise text-orange-500" title="Wow"></i>
+                            <i class="fas fa-sad-tear text-blue-300" title="Sad"></i>
+                            <i class="fas fa-angry text-red-700" title="Angry"></i>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-gray-600 dark:text-gray-400">
+                        <span class="react-count">0</span> reactions
+                    </div>
+                    <div class="mt-2 text-gray-600 dark:text-gray-400">
+                        <span class="recommend-count">0</span> people recommend this
+                    </div>
+                `;
+                blogPosts.prepend(newPost);
 
-        // Send data to the backend
-        const response = await fetch('/api/blog', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title, content }),
+                // Clear the form
+                blogForm.reset();
+            } else {
+                alert('Failed to post the blog. Please try again.');
+            }
         });
 
-        if (response.ok) {
-            // Add the new blog post dynamically
-            const newPost = document.createElement('div');
-            newPost.className = 'bg-white p-6 rounded-lg shadow-md';
-            newPost.innerHTML = `
-                <h3 class="text-xl font-semibold mb-2">${title}</h3>
-                <p class="text-gray-700">${content}</p>
-            `;
-            blogPosts.prepend(newPost);
+        // Handle dark mode toggle
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
 
-            // Clear the form
-            blogForm.reset();
-        } else {
-            alert('Failed to post the blog. Please try again.');
-        }
-    });
-</script>
+        // Handle menu toggle
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Handle reaction button click
+        document.addEventListener('click', (event) => {
+            if (event.target.classList.contains('reaction-icons') || event.target.closest('.reaction-icons')) {
+                const reaction = event.target.title;
+                const reactionBtn = event.target.closest('.reaction-btn').querySelector('button');
+                const reactionIcon = reactionBtn.querySelector('i');
+                const reactCount = event.target.closest('.reaction-btn').nextElementSibling.querySelector('.react-count');
+                const recommendCount = event.target.closest('.reaction-btn').nextElementSibling.nextElementSibling.querySelector('.recommend-count');
+
+                switch (reaction) {
+                    case 'Like':
+                        reactionIcon.className = 'fas fa-thumbs-up text-blue-500';
+                        break;
+                    case 'Love':
+                        reactionIcon.className = 'fas fa-heart text-red-500';
+                        break;
+                    case 'Haha':
+                        reactionIcon.className = 'fas fa-laugh text-yellow-500';
+                        break;
+                    case 'Wow':
+                        reactionIcon.className = 'fas fa-surprise text-orange-500';
+                        break;
+                    case 'Sad':
+                        reactionIcon.className = 'fas fa-sad-tear text-blue-300';
+                        break;
+                    case 'Angry':
+                        reactionIcon.className = 'fas fa-angry text-red-700';
+                        break;
+                }
+
+                reactionBtn.innerHTML = `<i class="${reactionIcon.className}"></i> ${reaction}`;
+                reactCount.textContent = parseInt(reactCount.textContent) + 1;
+                recommendCount.textContent = parseInt(recommendCount.textContent) + 1;
+            }
+        });
+  </script>
+ </body>
+</html>
