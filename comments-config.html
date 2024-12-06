@@ -1,14 +1,40 @@
 <div class="comments-section mt-6">
-    <h4 class="text-lg font-semibold mb-2">Comments</h4>
-    <div id="comments" class="space-y-4">
-        <!-- Example comment -->
-        <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-            <p class="text-gray-700 dark:text-gray-300">This is an example comment.</p>
-        </div>
+  <h4 class="text-lg font-semibold mb-2">Comments</h4>
+  <div id="comments" class="space-y-4">
+    <!-- Example comment -->
+    <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+      <p class="text-gray-700 dark:text-gray-300">This is an example comment.</p>
     </div>
-    <form id="commentForm" class="mt-4">
-        <textarea class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mt-1" id="comment" placeholder="Add a comment..." rows="3" required></textarea>
-        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-2" type="submit">Comment</button>
-    </form>
+  </div>
+  <form id="commentForm" class="mt-4">
+    <textarea class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mt-1" id="comment" placeholder="Add a comment..." rows="3" required></textarea>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-2" type="submit">Comment</button>
+  </form>
 </div>
-<script src="scripts/comments.js"></script>
+
+<script>
+  // Handle comment form submission
+  document.getElementById('commentForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get the comment text
+    const commentText = document.getElementById('comment').value.trim();
+
+    // If comment text is not empty, add it to the comments section
+    if (commentText) {
+      const commentContainer = document.getElementById('comments');
+      
+      // Create a new comment element
+      const newComment = document.createElement('div');
+      newComment.classList.add('bg-gray-100', 'dark:bg-gray-700', 'p-4', 'rounded-lg');
+      newComment.innerHTML = `<p class="text-gray-700 dark:text-gray-300">${commentText}</p>`;
+
+      // Append the new comment to the comments section
+      commentContainer.appendChild(newComment);
+
+      // Clear the comment input
+      document.getElementById('comment').value = '';
+    }
+  });
+</script>
+
