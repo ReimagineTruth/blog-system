@@ -1,0 +1,32 @@
+/* Smooth transition for dark mode and menu */
+html {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu {
+    display: none;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.menu.show {
+    display: block;
+    opacity: 1;
+}
+
+.menu-toggle.active {
+    background-color: #d1d5db;
+}
+
+.dark-mode-toggle.active {
+    background-color: #d1d5db;
+}
+
+body {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Optional: Styling for links when hovered */
+a:hover {
+    text-decoration: underline;
+}
