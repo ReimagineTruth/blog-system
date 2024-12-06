@@ -33,12 +33,13 @@
         .reaction-btn:hover .reaction-icons {
             display: flex;
         }
-        .reaction-icons i {
+        .reaction-icons span {
             margin: 0 4px;
             cursor: pointer;
             transition: transform 0.2s;
+            font-size: 1.5rem;
         }
-        .reaction-icons i:hover {
+        .reaction-icons span:hover {
             transform: scale(1.2);
         }
         @keyframes fadeIn {
@@ -91,59 +92,11 @@
         </div>
         <!-- Blog List -->
         <div class="space-y-6" id="blogPosts">
-            <!-- Example Blog Post -->
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                <div class="flex items-start space-x-4">
-                    <img alt="User profile picture" class="w-12 h-12 rounded-full" height="50" src="https://storage.googleapis.com/a1aa/image/mamlBqpHN6aeWyfdfRSXyhLKCePsHBmnjr18x83GbqEw4zgPB.jpg" width="50"/>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Sample News Title</h3>
-                        <p class="text-gray-700 dark:text-gray-300">This is a sample news content. It provides a brief overview of the news article.</p>
-                        <div class="flex items-center space-x-4 mt-4">
-                            <div class="reaction-btn">
-                                <button class="bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition duration-300">
-                                    <i class="fas fa-thumbs-up"></i> React
-                                </button>
-                                <div class="reaction-icons">
-                                    <i class="fas fa-thumbs-up text-blue-500" title="Like"></i>
-                                    <i class="fas fa-heart text-red-500" title="Love"></i>
-                                    <i class="fas fa-laugh text-yellow-500" title="Haha"></i>
-                                    <i class="fas fa-surprise text-orange-500" title="Wow"></i>
-                                    <i class="fas fa-sad-tear text-blue-300" title="Sad"></i>
-                                    <i class="fas fa-angry text-red-700" title="Angry"></i>
-                                </div>
-                            </div>
-                            <div class="text-gray-600 dark:text-gray-400">
-                                <span class="react-count">0</span> reactions
-                            </div>
-                            <div class="text-gray-600 dark:text-gray-400">
-                                <span class="recommend-count">0</span> people recommend this
-                            </div>
-                        </div>
-                        <!-- Comment Section -->
-                        <div class="mt-6">
-                            <h4 class="text-lg font-semibold mb-2">Comments</h4>
-                            <div class="space-y-4" id="comments">
-                                <!-- Example Comment -->
-                                <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                                    <p class="text-gray-700 dark:text-gray-300">This is a sample comment.</p>
-                                </div>
-                            </div>
-                            <form class="mt-4" id="commentForm">
-                                <div class="mb-4">
-                                    <label class="block text-gray-700 dark:text-gray-300 font-medium" for="comment">Add a comment</label>
-                                    <textarea class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mt-1 focus:ring focus:ring-blue-300 dark:focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100" id="comment" name="comment" placeholder="Write your comment here..." required="" rows="3"></textarea>
-                                </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300" type="submit">Comment</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Repeat for each news item -->
+            <!-- Blog posts will be dynamically added here -->
         </div>
     </div>
     <footer class="bg-gray-800 p-4 text-center">
-        <p>© 2024 Reimagine Truth. All rights reserved.</p>
+        <p class="text-gray-300 dark:text-gray-400">© 2024 Reimagine Truth. All rights reserved.</p>
     </footer>
     <script>
         const blogForm = document.getElementById('blogForm');
@@ -164,7 +117,7 @@
             newPost.className = 'bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md';
             newPost.innerHTML = `
                 <div class="flex items-start space-x-4">
-                    <img src="https://placehold.co/50x50" alt="User profile picture" class="w-12 h-12 rounded-full">
+                    <img src="https://i.ibb.co/p30Q5fs/Leonardo-Kino-XL-A-sharplydressed-intenselooking-male-characte-3.jpg" alt="User profile picture" class="w-12 h-12 rounded-full">
                     <div>
                         <h3 class="text-xl font-semibold mb-2">${title}</h3>
                         <p class="text-gray-700 dark:text-gray-300">${content}</p>
@@ -174,12 +127,12 @@
                                     <i class="fas fa-thumbs-up"></i> React
                                 </button>
                                 <div class="reaction-icons">
-                                    <i class="fas fa-thumbs-up text-blue-500" title="Like"></i>
-                                    <i class="fas fa-heart text-red-500" title="Love"></i>
-                                    <i class="fas fa-laugh text-yellow-500" title="Haha"></i>
-                                    <i class="fas fa-surprise text-orange-500" title="Wow"></i>
-                                    <i class="fas fa-sad-tear text-blue-300" title="Sad"></i>
-                                    <i class="fas fa-angry text-red-700" title="Angry"></i>
+                                    <span title="Like">👍</span>
+                                    <span title="Love">❤️</span>
+                                    <span title="Haha">😂</span>
+                                    <span title="Wow">😮</span>
+                                    <span title="Sad">😢</span>
+                                    <span title="Angry">😡</span>
                                 </div>
                             </div>
                             <div class="text-gray-600 dark:text-gray-400">
@@ -222,7 +175,7 @@
 
         // Handle reaction button click
         document.addEventListener('click', (event) => {
-            if (event.target.classList.contains('reaction-icons') || event.target.closest('.reaction-icons')) {
+            if (event.target.closest('.reaction-icons span')) {
                 const reaction = event.target.title;
                 const reactionBtn = event.target.closest('.reaction-btn').querySelector('button');
                 const reactionIcon = reactionBtn.querySelector('i');
