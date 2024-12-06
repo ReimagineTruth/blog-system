@@ -54,25 +54,26 @@
     </style>
 </head>
 <body class="bg-gray-100 font-roboto dark:bg-gray-900 dark:text-gray-100">
+    <header class="bg-gray-800 p-4 text-center relative">
+        <h1 class="text-3xl font-bold text-white">Reimagine Truth</h1>
+        <button class="absolute top-4 right-4 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded" id="darkModeToggle">
+            <i class="fas fa-moon dark:hidden"></i>
+            <i class="fas fa-sun hidden dark:inline"></i>
+        </button>
+        <button class="absolute top-4 left-4 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded lg:hidden" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+    <nav class="bg-gray-900 p-4 hidden lg:block" id="menu">
+        <ul class="flex flex-col lg:flex-row justify-center space-y-4 lg:space-y-0 lg:space-x-6 text-lg">
+            <li><a class="nav-link flex items-center text-gray-300 dark:text-gray-200 hover:text-blue-400" href="home.html"><i class="fas fa-home mr-2"></i>Home</a></li>
+            <li><a class="nav-link flex items-center text-gray-300 dark:text-gray-200 hover:text-blue-400" href="my-assets.html"><i class="fas fa-wallet mr-2"></i>My Assets</a></li>
+            <li><a class="nav-link flex items-center text-gray-300 dark:text-gray-200 hover:text-blue-400" href="about.html"><i class="fas fa-info-circle mr-2"></i>About</a></li>
+            <li><a class="nav-link flex items-center text-gray-300 dark:text-gray-200 hover:text-blue-400" href="community.html"><i class="fas fa-users mr-2"></i>Community</a></li>
+            <li><a class="nav-link flex items-center text-gray-300 dark:text-gray-200 hover:text-blue-400" href="settings.html"><i class="fas fa-cog mr-2"></i>Settings</a></li>
+        </ul>
+    </nav>
     <div class="container mx-auto p-6">
-        <!-- Menu Button -->
-        <div class="flex justify-between items-center mb-6">
-            <button class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded" id="menuToggle">
-                <i class="fas fa-bars"></i> Menu
-            </button>
-            <button class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded" id="darkModeToggle">
-                <i class="fas fa-moon dark:hidden"></i>
-                <i class="fas fa-sun hidden dark:inline"></i>
-            </button>
-        </div>
-        <!-- Menu -->
-        <div class="hidden bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6" id="menu">
-            <ul class="space-y-4">
-                <li><a class="text-gray-700 dark:text-gray-300 hover:underline" href="#">Home</a></li>
-                <li><a class="text-gray-700 dark:text-gray-300 hover:underline" href="#">About</a></li>
-                <li><a class="text-gray-700 dark:text-gray-300 hover:underline" href="#">Contact</a></li>
-            </ul>
-        </div>
         <!-- Blog Posting Form -->
         <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
             <h3 class="text-xl font-semibold mb-4">Post a News Update</h3>
@@ -85,13 +86,65 @@
                     <label class="block text-gray-700 dark:text-gray-300 font-medium" for="content">Content</label>
                     <textarea class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mt-1 focus:ring focus:ring-blue-300 dark:focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100" id="content" name="content" placeholder="Write your content here..." required="" rows="5"></textarea>
                 </div>
-                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" type="submit">Post</button>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300" type="submit">Post</button>
             </form>
         </div>
         <!-- Blog List -->
         <div class="space-y-6" id="blogPosts">
+            <!-- Example Blog Post -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <div class="flex items-start space-x-4">
+                    <img alt="User profile picture" class="w-12 h-12 rounded-full" height="50" src="https://storage.googleapis.com/a1aa/image/mamlBqpHN6aeWyfdfRSXyhLKCePsHBmnjr18x83GbqEw4zgPB.jpg" width="50"/>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Sample News Title</h3>
+                        <p class="text-gray-700 dark:text-gray-300">This is a sample news content. It provides a brief overview of the news article.</p>
+                        <div class="flex items-center space-x-4 mt-4">
+                            <div class="reaction-btn">
+                                <button class="bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition duration-300">
+                                    <i class="fas fa-thumbs-up"></i> React
+                                </button>
+                                <div class="reaction-icons">
+                                    <i class="fas fa-thumbs-up text-blue-500" title="Like"></i>
+                                    <i class="fas fa-heart text-red-500" title="Love"></i>
+                                    <i class="fas fa-laugh text-yellow-500" title="Haha"></i>
+                                    <i class="fas fa-surprise text-orange-500" title="Wow"></i>
+                                    <i class="fas fa-sad-tear text-blue-300" title="Sad"></i>
+                                    <i class="fas fa-angry text-red-700" title="Angry"></i>
+                                </div>
+                            </div>
+                            <div class="text-gray-600 dark:text-gray-400">
+                                <span class="react-count">0</span> reactions
+                            </div>
+                            <div class="text-gray-600 dark:text-gray-400">
+                                <span class="recommend-count">0</span> people recommend this
+                            </div>
+                        </div>
+                        <!-- Comment Section -->
+                        <div class="mt-6">
+                            <h4 class="text-lg font-semibold mb-2">Comments</h4>
+                            <div class="space-y-4" id="comments">
+                                <!-- Example Comment -->
+                                <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                                    <p class="text-gray-700 dark:text-gray-300">This is a sample comment.</p>
+                                </div>
+                            </div>
+                            <form class="mt-4" id="commentForm">
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 dark:text-gray-300 font-medium" for="comment">Add a comment</label>
+                                    <textarea class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mt-1 focus:ring focus:ring-blue-300 dark:focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100" id="comment" name="comment" placeholder="Write your comment here..." required="" rows="3"></textarea>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300" type="submit">Comment</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat for each news item -->
         </div>
     </div>
+    <footer class="bg-gray-800 p-4 text-center">
+        <p>© 2024 Reimagine Truth. All rights reserved.</p>
+    </footer>
     <script>
         const blogForm = document.getElementById('blogForm');
         const blogPosts = document.getElementById('blogPosts');
@@ -117,7 +170,7 @@
                         <p class="text-gray-700 dark:text-gray-300">${content}</p>
                         <div class="flex items-center space-x-4 mt-4">
                             <div class="reaction-btn">
-                                <button class="bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600">
+                                <button class="bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition duration-300">
                                     <i class="fas fa-thumbs-up"></i> React
                                 </button>
                                 <div class="reaction-icons">
@@ -145,7 +198,7 @@
                                     <label class="block text-gray-700 dark:text-gray-300 font-medium" for="comment">Add a comment</label>
                                     <textarea class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mt-1 focus:ring focus:ring-blue-300 dark:focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100" id="comment" name="comment" placeholder="Write your comment here..." required rows="3"></textarea>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" type="submit">Comment</button>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300" type="submit">Comment</button>
                             </form>
                         </div>
                     </div>
