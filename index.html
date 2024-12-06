@@ -1,22 +1,19 @@
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   News Blog
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-  <script>
-   // Tailwind CSS configuration for dark mode
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>News Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <script>
+        // Tailwind CSS configuration for dark mode
         tailwind.config = {
             darkMode: 'class',
         }
-  </script>
-  <style>
-   .reaction-btn {
+    </script>
+    <style>
+        .reaction-btn {
             position: relative;
             display: inline-block;
         }
@@ -54,134 +51,49 @@
                 transform: translateY(0);
             }
         }
-  </style>
- </head>
- <body class="bg-gray-100 font-roboto dark:bg-gray-900 dark:text-gray-100">
-  <div class="container mx-auto p-6">
-   <!-- Menu Button -->
-   <div class="flex justify-between items-center mb-6">
-    <button class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded" id="menuToggle">
-     <i class="fas fa-bars">
-     </i>
-     Menu
-    </button>
-    <button class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded" id="darkModeToggle">
-     <i class="fas fa-moon dark:hidden">
-     </i>
-     <i class="fas fa-sun hidden dark:inline">
-     </i>
-    </button>
-   </div>
-   <!-- Menu -->
-   <div class="hidden bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6" id="menu">
-    <ul class="space-y-4">
-     <li>
-      <a class="text-gray-700 dark:text-gray-300 hover:underline" href="#">
-       Home
-      </a>
-     </li>
-     <li>
-      <a class="text-gray-700 dark:text-gray-300 hover:underline" href="#">
-       About
-      </a>
-     </li>
-     <li>
-      <a class="text-gray-700 dark:text-gray-300 hover:underline" href="#">
-       Contact
-      </a>
-     </li>
-    </ul>
-   </div>
-   <!-- Blog Posting Form -->
-   <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
-    <h3 class="text-xl font-semibold mb-4">
-     Post a News Update
-    </h3>
-    <form id="blogForm">
-     <div class="mb-4">
-      <label class="block text-gray-700 dark:text-gray-300 font-medium" for="title">
-       Title
-      </label>
-      <input class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mt-1 focus:ring focus:ring-blue-300 dark:focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100" id="title" name="title" placeholder="Enter title" required="" type="text"/>
-     </div>
-     <div class="mb-4">
-      <label class="block text-gray-700 dark:text-gray-300 font-medium" for="content">
-       Content
-      </label>
-      <textarea class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mt-1 focus:ring focus:ring-blue-300 dark:focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100" id="content" name="content" placeholder="Write your content here..." required="" rows="5"></textarea>
-     </div>
-     <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" type="submit">
-      Post
-     </button>
-    </form>
-   </div>
-   <!-- Blog List -->
-   <div class="space-y-6" id="blogPosts">
-    <!-- Example blog post -->
-    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-     <h3 class="text-xl font-semibold mb-2">
-      Sample Blog Post Title
-     </h3>
-     <p class="text-gray-700 dark:text-gray-300">
-      This is a sample blog post content. It provides an example of how the blog post will look like.
-     </p>
-     <div class="reaction-btn mt-4">
-      <button class="bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600">
-       <i class="fas fa-thumbs-up">
-       </i>
-       React
-      </button>
-      <div class="reaction-icons">
-       <i class="fas fa-thumbs-up text-blue-500" title="Like">
-       </i>
-       <i class="fas fa-heart text-red-500" title="Love">
-       </i>
-       <i class="fas fa-laugh text-yellow-500" title="Haha">
-       </i>
-       <i class="fas fa-surprise text-orange-500" title="Wow">
-       </i>
-       <i class="fas fa-sad-tear text-blue-300" title="Sad">
-       </i>
-       <i class="fas fa-angry text-red-700" title="Angry">
-       </i>
-      </div>
-     </div>
-     <div class="mt-2 text-gray-600 dark:text-gray-400">
-      <span class="react-count">
-       0
-      </span>
-      reactions
-     </div>
-     <div class="mt-2 text-gray-600 dark:text-gray-400">
-      <span class="recommend-count">
-       0
-      </span>
-      people recommend this
-     </div>
-     <!-- Comment Section -->
-     <div class="mt-6">
-      <h4 class="text-lg font-semibold mb-2">
-       Comments
-      </h4>
-      <div class="space-y-4" id="comments">
-      </div>
-      <form class="mt-4" id="commentForm">
-       <div class="mb-4">
-        <label class="block text-gray-700 dark:text-gray-300 font-medium" for="comment">
-         Add a comment
-        </label>
-        <textarea class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mt-1 focus:ring focus:ring-blue-300 dark:focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100" id="comment" name="comment" placeholder="Write your comment here..." required="" rows="3"></textarea>
-       </div>
-       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" type="submit">
-        Comment
-       </button>
-      </form>
-     </div>
+    </style>
+</head>
+<body class="bg-gray-100 font-roboto dark:bg-gray-900 dark:text-gray-100">
+    <div class="container mx-auto p-6">
+        <!-- Menu Button -->
+        <div class="flex justify-between items-center mb-6">
+            <button class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded" id="menuToggle">
+                <i class="fas fa-bars"></i> Menu
+            </button>
+            <button class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded" id="darkModeToggle">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+        <!-- Menu -->
+        <div class="hidden bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6" id="menu">
+            <ul class="space-y-4">
+                <li><a class="text-gray-700 dark:text-gray-300 hover:underline" href="#">Home</a></li>
+                <li><a class="text-gray-700 dark:text-gray-300 hover:underline" href="#">About</a></li>
+                <li><a class="text-gray-700 dark:text-gray-300 hover:underline" href="#">Contact</a></li>
+            </ul>
+        </div>
+        <!-- Blog Posting Form -->
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
+            <h3 class="text-xl font-semibold mb-4">Post a News Update</h3>
+            <form id="blogForm">
+                <div class="mb-4">
+                    <label class="block text-gray-700 dark:text-gray-300 font-medium" for="title">Title</label>
+                    <input class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mt-1 focus:ring focus:ring-blue-300 dark:focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100" id="title" name="title" placeholder="Enter title" required="" type="text"/>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 dark:text-gray-300 font-medium" for="content">Content</label>
+                    <textarea class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mt-1 focus:ring focus:ring-blue-300 dark:focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100" id="content" name="content" placeholder="Write your content here..." required="" rows="5"></textarea>
+                </div>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" type="submit">Post</button>
+            </form>
+        </div>
+        <!-- Blog List -->
+        <div class="space-y-6" id="blogPosts">
+        </div>
     </div>
-   </div>
-  </div>
-  <script>
-   const blogForm = document.getElementById('blogForm');
+    <script>
+        const blogForm = document.getElementById('blogForm');
         const blogPosts = document.getElementById('blogPosts');
         const darkModeToggle = document.getElementById('darkModeToggle');
         const menuToggle = document.getElementById('menuToggle');
@@ -194,60 +106,55 @@
             const title = document.getElementById('title').value;
             const content = document.getElementById('content').value;
 
-            // Send data to the backend
-            const response = await fetch('/api/blog', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ title, content }),
-            });
-
-            if (response.ok) {
-                // Add the new blog post dynamically
-                const newPost = document.createElement('div');
-                newPost.className = 'bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md';
-                newPost.innerHTML = `
-                    <h3 class="text-xl font-semibold mb-2">${title}</h3>
-                    <p class="text-gray-700 dark:text-gray-300">${content}</p>
-                    <div class="reaction-btn mt-4">
-                        <button class="bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600">
-                            <i class="fas fa-thumbs-up"></i> React
-                        </button>
-                        <div class="reaction-icons">
-                            <i class="fas fa-thumbs-up text-blue-500" title="Like"></i>
-                            <i class="fas fa-heart text-red-500" title="Love"></i>
-                            <i class="fas fa-laugh text-yellow-500" title="Haha"></i>
-                            <i class="fas fa-surprise text-orange-500" title="Wow"></i>
-                            <i class="fas fa-sad-tear text-blue-300" title="Sad"></i>
-                            <i class="fas fa-angry text-red-700" title="Angry"></i>
-                        </div>
-                    </div>
-                    <div class="mt-2 text-gray-600 dark:text-gray-400">
-                        <span class="react-count">0</span> reactions
-                    </div>
-                    <div class="mt-2 text-gray-600 dark:text-gray-400">
-                        <span class="recommend-count">0</span> people recommend this
-                    </div>
-                    <!-- Comment Section -->
-                    <div class="mt-6">
-                        <h4 class="text-lg font-semibold mb-2">Comments</h4>
-                        <div class="space-y-4" id="comments">
-                        </div>
-                        <form class="mt-4" id="commentForm">
-                            <div class="mb-4">
-                                <label class="block text-gray-700 dark:text-gray-300 font-medium" for="comment">Add a comment</label>
-                                <textarea class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mt-1 focus:ring focus:ring-blue-300 dark:focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100" id="comment" name="comment" placeholder="Write your comment here..." required rows="3"></textarea>
+            // Add the new blog post dynamically
+            const newPost = document.createElement('div');
+            newPost.className = 'bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md';
+            newPost.innerHTML = `
+                <div class="flex items-start space-x-4">
+                    <img src="https://placehold.co/50x50" alt="User profile picture" class="w-12 h-12 rounded-full">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">${title}</h3>
+                        <p class="text-gray-700 dark:text-gray-300">${content}</p>
+                        <div class="flex items-center space-x-4 mt-4">
+                            <div class="reaction-btn">
+                                <button class="bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600">
+                                    <i class="fas fa-thumbs-up"></i> React
+                                </button>
+                                <div class="reaction-icons">
+                                    <i class="fas fa-thumbs-up text-blue-500" title="Like"></i>
+                                    <i class="fas fa-heart text-red-500" title="Love"></i>
+                                    <i class="fas fa-laugh text-yellow-500" title="Haha"></i>
+                                    <i class="fas fa-surprise text-orange-500" title="Wow"></i>
+                                    <i class="fas fa-sad-tear text-blue-300" title="Sad"></i>
+                                    <i class="fas fa-angry text-red-700" title="Angry"></i>
+                                </div>
                             </div>
-                            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" type="submit">Comment</button>
-                        </form>
+                            <div class="text-gray-600 dark:text-gray-400">
+                                <span class="react-count">0</span> reactions
+                            </div>
+                            <div class="text-gray-600 dark:text-gray-400">
+                                <span class="recommend-count">0</span> people recommend this
+                            </div>
+                        </div>
+                        <!-- Comment Section -->
+                        <div class="mt-6">
+                            <h4 class="text-lg font-semibold mb-2">Comments</h4>
+                            <div class="space-y-4" id="comments"></div>
+                            <form class="mt-4" id="commentForm">
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 dark:text-gray-300 font-medium" for="comment">Add a comment</label>
+                                    <textarea class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mt-1 focus:ring focus:ring-blue-300 dark:focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100" id="comment" name="comment" placeholder="Write your comment here..." required rows="3"></textarea>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" type="submit">Comment</button>
+                            </form>
+                        </div>
                     </div>
-                `;
-                blogPosts.prepend(newPost);
+                </div>
+            `;
+            blogPosts.prepend(newPost);
 
-                // Clear the form
-                blogForm.reset();
-            } else {
-                alert('Failed to post the blog. Please try again.');
-            }
+            // Clear the form
+            blogForm.reset();
         });
 
         // Handle dark mode toggle
@@ -313,6 +220,23 @@
                 event.target.reset();
             }
         });
-  </script>
- </body>
+
+        // Smooth scrolling for better user experience
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Auto-hide menu on click outside
+        document.addEventListener('click', (event) => {
+            if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                menu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
 </html>
